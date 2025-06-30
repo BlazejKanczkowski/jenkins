@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  carina-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: carina-test-runner
+    environment:
+      - TEST_ENV=stage
+    volumes:
+      - ./target-local:/app/target
+    command: >
+      sh -c "mvn clean test -Denv=$TEST_ENV && tail -f /dev/null"
