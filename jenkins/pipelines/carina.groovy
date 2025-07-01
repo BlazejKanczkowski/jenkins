@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'M3'
-        jdk 'JDK11'
-    }
-
     environment {
         SUITE = "${params.suite}"
         ENV = "${params.env}"
