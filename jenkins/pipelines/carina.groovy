@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-                git url: 'https://github.com/BlazejKanczkowski/jenkins', branch: 'main'
+                git url: 'https://github.com/zebrunner/carina-demo.git'
             }
         }
         stage('Run tests') {
