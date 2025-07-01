@@ -1,0 +1,5 @@
+reporting.enabled=true
+reporting.projectKey=BLAZEJ
+reporting.run.displayName=Carina API run
+reporting.run.environment=DEV
+capabilities.provider=selenium
