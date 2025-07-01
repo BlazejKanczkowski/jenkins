@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        jdk 'JDK11'
-        maven 'Maven3'
-    }
-
     parameters {
         string(name: 'suite', defaultValue: 'api', description: 'TestNG suite name')
         string(name: 'env', defaultValue: 'STAGE', description: 'Environment')
