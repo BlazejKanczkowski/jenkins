@@ -1,21 +1,31 @@
-pipelineJob('MyProject_API') {
-    description('Run API test suite from carina-demo project')
-    parameters {
-        stringParam('suite', 'api', 'TestNG suite name')
-        stringParam('env', 'STAGE', 'Environment')
+pipeline {
+    agent any
+
+    tools {
+        maven 'MAVEN'
+        jdk 'JDK11'
     }
-    definition {
-        cpsScm {
-            scm {
-                git {
-                    remote {
-                        url('https://github.com/BlazejKanczkowski/jenkins')
-                        credentials('github-token-carina-demo')
-                    }
-                    branches('*/main')
-                }
+
+    environment {
+        SUITE = "${params.suite}"
+        ENV = "${params.env}"
+    }
+
+    parameters {
+        string(name: 'suite', defaultValue: 'api', description: 'TestNG suite name')
+        string(name: 'env', defaultValue: 'STAGE', description: 'Environment')
+    }
+
+    stages {
+        stage('Git checkout') {
+            steps {
+                git url: 'https://github.com/BlazejKanczkowski/jenkins', branch: 'main'
             }
-            scriptPath('jenkins/pipelines/carina.groovy')
+        }
+        stage('Run tests') {
+            steps {
+                sh './mvnw clean test -Dsuite=${SUITE} -Denv=${ENV}'
+            }
         }
     }
 }
