@@ -13,6 +13,8 @@
 
 	<parameter name="jenkinsJobExecutionMode" value="continue"/>
 
+	<parameter name="capabilities.provider" value="selenium"/>
+
 	<test name="User API tests">
 		<classes>
 			<class name="com.zebrunner.carina.demo.APISampleTest" />
