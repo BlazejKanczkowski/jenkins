@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'M3'
+        jdk 'JDK11'
+    }
+
     environment {
         SUITE = "${params.suite}"
         ENV = "${params.env}"
@@ -12,11 +17,6 @@ pipeline {
     }
 
     stages {
-        stage('Git checkout') {
-            steps {
-                git url: 'https://github.com/BlazejKanczkowski/jenkins'
-            }
-        }
         stage('Run tests') {
             steps {
                 sh './mvnw clean test -Dsuite=${SUITE} -Denv=${ENV}'
