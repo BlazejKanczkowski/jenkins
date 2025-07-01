@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-    environment {
-        SUITE = "${params.suite}"
-        ENV = "${params.env}"
+    tools {
+        jdk 'JDK11'
+        maven 'Maven3'
     }
 
     parameters {
@@ -11,10 +11,20 @@ pipeline {
         string(name: 'env', defaultValue: 'STAGE', description: 'Environment')
     }
 
+    environment {
+        SUITE = "${params.suite}"
+        ENV = "${params.env}"
+    }
+
     stages {
-        stage('Run tests') {
+        stage('Checkout') {
             steps {
-                sh './mvnw clean test -Dsuite=${SUITE} -Denv=${ENV}'
+                git url: 'https://github.com/BlazejKanczkowski/jenkins'
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                sh 'mvn clean test -Dsuite=${SUITE} -Denv=${ENV}'
             }
         }
     }
