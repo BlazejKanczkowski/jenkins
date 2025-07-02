@@ -3,7 +3,7 @@
 
 	<parameter name="jenkinsRegressionPipeline" value="cross_browser_regression"/>
 	<parameter name="jenkinsRegressionMatrix" value="browser: chrome; browser: firefox"/>
-	<parameter name="jenkinsRegressionScheduling" value="H 3 * * *"/>
+	<parameter name="jenkinsRegressionScheduling" value="H 13 * * *"/>
 	<parameter name="suiteOwner" value="qpsdemo"/>
 	<parameter name="jenkinsJobName" value="API-Demo-Test"/>
 	<parameter name="jenkinsJobType" value="api"/>
