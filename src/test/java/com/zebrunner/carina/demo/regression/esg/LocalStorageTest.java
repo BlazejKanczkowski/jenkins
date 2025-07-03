@@ -19,6 +19,7 @@ import java.lang.invoke.MethodHandles;
 
 public class LocalStorageTest implements IAbstractTest, IPageStorageHelper {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    // Added comment for test trigger
 
     @Test
     public void addItemToTheLocalStorageWithJS() throws IOException {
