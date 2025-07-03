@@ -34,7 +34,7 @@ public class LocalStorageTest implements IAbstractTest, IPageStorageHelper {
         Assert.assertEquals(esgvalue, value, "Value is not present or is not equal");
         LOGGER.info("Item in the local storage from esg with name = '{}' and value '{}' exists.", name, esgvalue);
     }
-
+           //a
     @Test
     public void addItemToTheLocalStorageWithAugmentedDriver() throws IOException {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
